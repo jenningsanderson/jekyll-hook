@@ -112,7 +112,7 @@ function run(file, params, cb) {
     });
 }
 
-/*
+
 function send(body, subject, data) {
     if (config.email && data.pusher.email) {
         var message = {
@@ -124,4 +124,3 @@ function send(body, subject, data) {
         mailer.send(message, function(err) { if (err) console.warn(err); });
     }
 }
-*/
