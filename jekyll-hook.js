@@ -10,6 +10,10 @@ var spawn   = require('child_process').spawn;
 //var email   = require('emailjs/email');
 //var mailer  = email.server.connect(config.email);
 
+app.get('/', function(req, res){
+    res.send('Hello World');
+});
+
 app.use(express.bodyParser());
 
 // Receive webhook post
