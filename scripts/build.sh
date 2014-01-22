@@ -25,5 +25,5 @@ cd -
 
 # Run jekyll build operation (and publish)
 cd $source
-jekyll --destination /www/hcc
+jekyll build -d /www/hcc
 cd -
