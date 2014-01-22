@@ -7,13 +7,15 @@ var app     = express();
 var queue   = require('queue-async');
 var tasks   = queue(1);
 var spawn   = require('child_process').spawn;
-var email   = require('emailjs/email');
-var mailer  = email.server.connect(config.email);
+//var email   = require('emailjs/email');
+//var mailer  = email.server.connect(config.email);
 
 app.use(express.bodyParser());
 
 // Receive webhook post
 app.post('/hooks/jekyll/:branch', function(req, res) {
+
+    console.log('hello');
 
     // Close connection
     res.send(202);
@@ -88,6 +90,8 @@ var port = process.env.PORT || 8080;
 app.listen(port);
 console.log('Listening on port ' + port);
 
+//This is the most important part - it runs as the main user, so my possibilities
+//are virtually endless.  It just depends on what type of POST data I send it...
 function run(file, params, cb) {
     var process = spawn(file, params);
 
@@ -104,6 +108,7 @@ function run(file, params, cb) {
     });
 }
 
+/*
 function send(body, subject, data) {
     if (config.email && data.pusher.email) {
         var message = {
@@ -115,3 +120,4 @@ function send(body, subject, data) {
         mailer.send(message, function(err) { if (err) console.warn(err); });
     }
 }
+*/
