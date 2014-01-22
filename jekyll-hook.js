@@ -88,8 +88,6 @@ app.post('/hooks/jekyll/branch', function(req, res) {
 
 });
 
-*/
-
 // Start server
 var port = process.env.PORT || 8080;
 app.listen(port);
