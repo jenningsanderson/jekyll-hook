@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-/*
+
 var config  = require('./config.json');
 var fs      = require('fs');
 var express = require('express');
@@ -11,23 +11,11 @@ var spawn   = require('child_process').spawn;
 //var email   = require('emailjs/email');
 //var mailer  = email.server.connect(config.email);
 
-*/
-var express = require('express'),
-    app = express.createServer();
 
 
-app.get('/', function(req, res){
-    res.send('Hello World');
-});
-
-
-
-
-//app.use(express.bodyParser());
+app.use(express.bodyParser());
 
 // Receive webhook post
-
-/*
 app.post('/hooks/jekyll/branch', function(req, res) {
 
     console.log('hello');
@@ -61,12 +49,12 @@ app.post('/hooks/jekyll/branch', function(req, res) {
         }
 
         // Process webhook data into params for scripts
-        /* repo    params.push(data.repo);
-        /* branch  params.push(data.branch);
-        /* owner   params.push(data.owner);
-        /* giturl  params.push('git@' + config.gh_server + ':' + data.owner + '/' + data.repo + '.git');
-        /* source  params.push(config.temp + '/' + data.owner + '/' + data.repo + '/' + data.branch + '/' + 'code');
-        /* build   params.push(config.temp + '/' + data.owner + '/' + data.repo + '/' + data.branch + '/' + 'site');
+        /* repo    */ params.push(data.repo);
+        /* branch  */ params.push(data.branch);
+        /* owner   */ params.push(data.owner);
+        /* giturl  */ params.push('git@' + config.gh_server + ':' + data.owner + '/' + data.repo + '.git');
+        /* source  */ params.push(config.temp + '/' + data.owner + '/' + data.repo + '/' + data.branch + '/' + 'code');
+        /* build   */ params.push(config.temp + '/' + data.owner + '/' + data.repo + '/' + data.branch + '/' + 'site');
 
         // Run build script
         run(config.scripts.build, params, function(err) {
