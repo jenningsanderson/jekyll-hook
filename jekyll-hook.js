@@ -17,7 +17,7 @@ app.get('/', function(req, res){
 });
 
 // Receive webhook post
-app.post('/hooks/jekyll/branch', function(req, res) {
+app.post('/hooks/jekyll/:branch', function(req, res) {
 
     console.log('hello');
 
