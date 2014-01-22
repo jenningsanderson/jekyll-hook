@@ -68,7 +68,7 @@ app.post('/hooks/jekyll/:branch', function(req, res) {
             }
 
             // Run publish script
-            run(config.scripts.publish, params, function(err) {
+           /* run(config.scripts.publish, params, function(err) {
                 if (err) {
                     console.log('Failed to publish: ' + data.owner + '/' + data.repo);
                     send('Your website at ' + data.owner + '/' + data.repo + ' failed to publish.', 'Error publishing site', data);
@@ -83,7 +83,7 @@ app.post('/hooks/jekyll/:branch', function(req, res) {
 
                 if (typeof cb === 'function') cb();
                 return;
-            });
+            });*/
         });
     }, req, res);
 

@@ -23,7 +23,7 @@ git checkout $branch
 git pull origin $branch
 cd -
 
-# Run jekyll
+# Run jekyll build operation (and publish)
 cd $source
-jekyll --destination $build
+jekyll --destination /www/hcc
 cd -
