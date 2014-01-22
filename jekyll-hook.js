@@ -13,7 +13,7 @@ var spawn   = require('child_process').spawn;
 app.use(express.bodyParser());
 
 // Receive webhook post
-app.post('/hooks/jekyll/:branch', function(req, res) {
+app.post('/hooks/jekyll/branch', function(req, res) {
 
     console.log('hello');
 
