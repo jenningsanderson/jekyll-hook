@@ -13,6 +13,7 @@ app.use(express.bodyParser());
 
 app.get('/', function(req, res){
     res.send('Hello World');
+    console.log("Got connection")
 });
 
 // Receive webhook post
