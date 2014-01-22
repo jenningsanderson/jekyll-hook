@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-
-
 var config  = require('./config.json');
 var fs      = require('fs');
 var express = require('express');
@@ -10,8 +8,6 @@ var tasks   = queue(1);
 var spawn   = require('child_process').spawn;
 //var email   = require('emailjs/email');
 //var mailer  = email.server.connect(config.email);
-
-
 
 app.use(express.bodyParser());
 
