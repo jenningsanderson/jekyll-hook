@@ -16,7 +16,7 @@ app.get('/', function(req, res){
     console.log("Got connection")
 });
 
-app.get('/rake', function(req, send){
+app.get('/rake', function(req, res){
     req.send('req.params.data');
     console.log('Got parameters')
 });
