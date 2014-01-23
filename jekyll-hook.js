@@ -17,7 +17,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/rake', function(req, res){
-    req.send('req.params.data');
+    res.send('req.params.data');
     console.log('Got parameters')
 });
 
