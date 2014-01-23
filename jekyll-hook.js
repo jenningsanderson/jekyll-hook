@@ -16,8 +16,11 @@ app.get('/', function(req, res){
     console.log("Got connection")
 });
 
+//params is POST data
+//query is GET data.
+
 app.get('/rake', function(req, res){
-    res.send(req.params.data);
+    res.send(req.query.data);
     console.log('Got parameters')
 });
 
