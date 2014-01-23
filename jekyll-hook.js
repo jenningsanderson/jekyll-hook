@@ -16,6 +16,11 @@ app.get('/', function(req, res){
     console.log("Got connection")
 });
 
+app.get'/rake', function(req, send){
+    req.send('req.params.data');
+    console.log('Got parameters')
+});
+
 // Receive webhook post
 app.post('/hooks/jekyll/:branch', function(req, res) {
 
