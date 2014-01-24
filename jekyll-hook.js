@@ -18,31 +18,38 @@ app.get('/', function(req, res){
     console.log("Got connection")
 });
 
-//params is POST data
 //query is GET data.
-
 //This is the behavior for hitting /rake task
 //example: ...8080/rake?task='put rake task here'
 app.get('/rake', function(req, res){
+    //local variables for the rake task
     var site = req.query.site;
     var rakeTask = req.query.task;
-    console.log('Got task: '+rakeTask.toString()+' for '+site.toString()+' site');
-
-    //This is where it runs the rake task
-    var build_path = config.sites[site].path;
     var repo_path  = config.sites[site].repo;
 
-    res.send(build_path + '' + repo_path);
+    //feedback
+    console.log('Got task: '+rakeTask.toString()+' for '+site.toString()+' site');
 
-    // run(site, , function(err) {
-    //         if (err) {
-    //             console.log('Failed to build: ' + data.owner + '/' + data.repo);
-    //             send('Your website at ' + data.owner + '/' + data.repo + ' failed to build.', 'Error building site', data);
+    //Prepare the array to pass
+    var params = []
+    params.push(repo_path);
+    params.push(rakeTask);
 
-    //             if (typeof cb === 'function') cb();
-    //             return;
-    //         }
-    //This is where we return something.
+    //Run the rake scripts
+    run('./scripts/rake_script.sh', params, function(err) {
+        if (err) {
+            console.log('Failed to run task');
+            if (typeof cb === 'function') cb();
+            return;
+        }
+        // Done running scripts
+        console.log('Successfully ran rake task: '+rakeTask);
+        //send('Your website at ' + data.owner + '/' + data.repo + ' was succesfully published.', 'Succesfully published site', data);
+
+        if (typeof cb === 'function') cb();
+        return;
+    });
+    }, req, res);
 });
 
 // Receive webhook post
@@ -95,24 +102,13 @@ app.post('/hooks/jekyll/:branch', function(req, res) {
                 if (typeof cb === 'function') cb();
                 return;
             }
-
-            // Run publish script
-           /* run(config.scripts.publish, params, function(err) {
-                if (err) {
-                    console.log('Failed to publish: ' + data.owner + '/' + data.repo);
-                    send('Your website at ' + data.owner + '/' + data.repo + ' failed to publish.', 'Error publishing site', data);
-
-                    if (typeof cb === 'function') cb();
-                    return;
-                }
-
                 // Done running scripts
                 console.log('Successfully rendered: ' + data.owner + '/' + data.repo);
                 send('Your website at ' + data.owner + '/' + data.repo + ' was succesfully published.', 'Succesfully published site', data);
 
                 if (typeof cb === 'function') cb();
                 return;
-            });*/
+            });
         });
     }, req, res);
 
