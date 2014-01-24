@@ -30,7 +30,7 @@ app.get('/rake', function(req, res){
 
     //This is where it runs the rake task
     console.log(config.sites.site);
-    res.send(config.sites.site);
+    res.send(config.sites[site]);
 
     // run(site, , function(err) {
     //         if (err) {
