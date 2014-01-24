@@ -17,7 +17,7 @@ app.get('/', function(req, res){
     var site = req.query.site;
     var task = 'cd' + config.sites[site].repo + '; rake -T';
 
-    res.send(spawn(task));
+    res.send(task);
 });
 
 //query is GET data.
