@@ -38,16 +38,17 @@ app.get('/rake', function(req, res){
     run('./scripts/rake_script.sh', params, function(err) {
         if (err) {
             console.log('Failed to run task');
+            res.send('build failed')
             if (typeof cb === 'function') cb();
             return;
         }
         // Done running scripts
         console.log('Successfully ran rake task: '+rakeTask);
+        res.send('Site rebuilt successfully');
         
         if (typeof cb === 'function') cb();
         return;
     });
-    res.send('done');
 });
 
 // Receive webhook post
