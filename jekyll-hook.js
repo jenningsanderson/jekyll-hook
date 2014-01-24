@@ -17,7 +17,7 @@ app.get('/', function(req, res){
     var site = req.query.site;
     var task = 'cd ' + config.sites[site].repo + '; rake -T';
 
-    var data = run(task, [], function(err) {
+    run(task, [], function(err) {
         if (err) {
             console.log('Failed to run task');
             //res.send('build failed')
@@ -31,8 +31,6 @@ app.get('/', function(req, res){
         if (typeof cb === 'function') cb();
         return;
     });
-
-    res.send(data);
 });
 
 //query is GET data.
