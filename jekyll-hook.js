@@ -29,8 +29,10 @@ app.get('/rake', function(req, res){
     console.log('Got task: '+rakeTask.toString()+' for '+site.toString()+' site');
 
     //This is where it runs the rake task
-    console.log(config.sites.site);
-    res.send(config.sites[site]);
+    var build_path = config.sites[site].path;
+    var repo_path  = config.sites[site].repo;
+
+    res.send(build_path, repo_path);
 
     // run(site, , function(err) {
     //         if (err) {
