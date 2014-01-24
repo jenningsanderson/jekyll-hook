@@ -43,8 +43,7 @@ app.get('/rake', function(req, res){
         }
         // Done running scripts
         console.log('Successfully ran rake task: '+rakeTask);
-        //send('Your website at ' + data.owner + '/' + data.repo + ' was succesfully published.', 'Succesfully published site', data);
-
+        
         if (typeof cb === 'function') cb();
         return;
     });
@@ -102,8 +101,7 @@ app.post('/hooks/jekyll/:branch', function(req, res) {
             }
             // Done running scripts
             console.log('Successfully rendered: ' + data.owner + '/' + data.repo);
-            send('Your website at ' + data.owner + '/' + data.repo + ' was succesfully published.', 'Succesfully published site', data);
-
+            
             if (typeof cb === 'function') cb();
             return;
         });
@@ -130,16 +128,4 @@ function run(file, params, cb) {
     process.on('exit', function (code) {
         if (typeof cb === 'function') cb(code !== 0);
     });
-}
-
-function send(body, subject, data) {
-    if (config.email && data.pusher.email) {
-        var message = {
-            text: body,
-            from: config.email.user,
-            to: data.pusher.email,
-            subject: subject
-        };
-        mailer.send(message, function(err) { if (err) console.warn(err); });
-    }
 }
