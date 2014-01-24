@@ -32,7 +32,7 @@ app.get('/rake', function(req, res){
     var build_path = config.sites[site].path;
     var repo_path  = config.sites[site].repo;
 
-    res.send(build_path, repo_path);
+    res.send(build_path + '' + repo_path);
 
     // run(site, , function(err) {
     //         if (err) {
