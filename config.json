@@ -4,11 +4,11 @@
         "build": "./scripts/build.sh",
         "publish": "./scripts/publish.sh"
     },
-    "sites" : [
-        "epic" : {
+    "sites": [
+        "epic": {
             "path": "/www/epic", 
             "repo": "~/epic/"},
-        "hcc-colorado" : {
+        "hcc-colorado": {
             "path": "/www/hcc-colorado",
             "repo": "~/hcc-colorado"}],
     "email": {
