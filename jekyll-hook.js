@@ -6,6 +6,7 @@ var app     = express();
 var queue   = require('queue-async');
 var tasks   = queue(1);
 var spawn   = require('child_process').spawn;
+var exec    = require('child_process').exec;
 //var email   = require('emailjs/email');
 //var mailer  = email.server.connect(config.email);
 
@@ -13,11 +14,11 @@ app.use(express.bodyParser());
 
 //This is the default behavior:
 app.get('/', function(req, res){
-    var site = 'hcc-colorado'
+    var site = 'epic'
     var site = req.query.site;
     var task = 'cd ' + config.sites[site].repo + '; rake -T';
 
-    res.send(spawn(task));
+    res.send(exec(task));
 });
 
 //query is GET data.
