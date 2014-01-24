@@ -34,6 +34,8 @@ app.get('/', function(req, res){
             return;
         });
     }//end if
+
+    res.send('Yep, reached the end.');
 });
 
 //query is GET data.
