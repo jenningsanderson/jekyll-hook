@@ -9,8 +9,10 @@ var spawn   = require('child_process').spawn;
 //var email   = require('emailjs/email');
 //var mailer  = email.server.connect(config.email);
 
+
 app.use(express.bodyParser());
 
+//This is the default behavior:
 app.get('/', function(req, res){
     res.send('Hello World');
     console.log("Got connection")
@@ -19,9 +21,25 @@ app.get('/', function(req, res){
 //params is POST data
 //query is GET data.
 
+//This is the behavior for hitting /rake task
+//example: ...8080/rake?task='put rake task here'
 app.get('/rake', function(req, res){
-    res.send(req.query.data);
-    console.log('Got parameters')
+    var site = req.query.site;
+    var rakeTask = req.query.task;
+    console.log('Got task: '+rakeTask.toString()+' for '+site.toString()+' site');
+
+    //This is where it runs the rake task
+    res.send(config.site.path);
+
+    // run(site, , function(err) {
+    //         if (err) {
+    //             console.log('Failed to build: ' + data.owner + '/' + data.repo);
+    //             send('Your website at ' + data.owner + '/' + data.repo + ' failed to build.', 'Error building site', data);
+
+    //             if (typeof cb === 'function') cb();
+    //             return;
+    //         }
+    //This is where we return something.
 });
 
 // Receive webhook post
