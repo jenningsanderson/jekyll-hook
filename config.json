@@ -18,6 +18,6 @@
         "epic": {
             "repo": "~/epic/"},
         "hcc-colorado": {
-            "repo": "~/hcc-colorado"}
+            "repo": "/home/ubuntu/hcc-colorado"}
     }
 }
