@@ -9,7 +9,6 @@ var spawn   = require('child_process').spawn;
 //var email   = require('emailjs/email');
 //var mailer  = email.server.connect(config.email);
 
-
 app.use(express.bodyParser());
 
 //This is the default behavior:
@@ -49,8 +48,7 @@ app.get('/rake', function(req, res){
         if (typeof cb === 'function') cb();
         return;
     });
-    }, req, res);
-});
+}, req, res);
 
 // Receive webhook post
 app.post('/hooks/jekyll/:branch', function(req, res) {
@@ -117,8 +115,7 @@ var port = process.env.PORT || 8080;
 app.listen(port);
 console.log('Listening on port ' + port);
 
-//This is the most important part - it runs as the main user, so my possibilities
-//are virtually endless.  It just depends on what type of POST data I send it...
+//The run script
 function run(file, params, cb) {
     var process = spawn(file, params);
 
@@ -134,7 +131,6 @@ function run(file, params, cb) {
         if (typeof cb === 'function') cb(code !== 0);
     });
 }
-
 
 function send(body, subject, data) {
     if (config.email && data.pusher.email) {
