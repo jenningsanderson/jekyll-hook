@@ -14,7 +14,7 @@
     
     "accounts": ["jenningsanderson", "rsoden"],
 
-    "sites": [
+    "sites": {
         "epic": {
             "path": "/www/epic", 
             "repo": "~/epic/"},
@@ -22,5 +22,5 @@
         "hcc-colorado": {
             "path": "/www/hcc-colorado",
             "repo": "~/hcc-colorado"}
-    ]
+    }
 }
