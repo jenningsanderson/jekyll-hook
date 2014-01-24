@@ -15,7 +15,7 @@ app.use(express.bodyParser());
 app.get('/', function(req, res){
     var site = 'epic'
     var site = req.query.site;
-    if (site != undefined){}
+    if (site != undefined){
         var task = 'cd ' + config.sites[site].repo + '; rake -T';
 
         res.send(task)
