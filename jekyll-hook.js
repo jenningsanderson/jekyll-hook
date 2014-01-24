@@ -15,23 +15,25 @@ app.use(express.bodyParser());
 app.get('/', function(req, res){
     var site = 'epic'
     var site = req.query.site;
-    var task = 'cd ' + config.sites[site].repo + '; rake -T';
+    if (site != undefined){}
+        var task = 'cd ' + config.sites[site].repo + '; rake -T';
 
-    res.send(task)
-    run(task, [], function(err) {
-        if (err) {
-            console.log('Failed to run task');
-            //res.send('build failed')
+        res.send(task)
+        run(task, [], function(err) {
+            if (err) {
+                console.log('Failed to run task');
+                //res.send('build failed')
+                if (typeof cb === 'function') cb();
+                return;
+            }
+            // Done running scripts
+            console.log('Successfully ran rake task');
+            //res.send('Site rebuilt successfully');
+        
             if (typeof cb === 'function') cb();
             return;
-        }
-        // Done running scripts
-        console.log('Successfully ran rake task');
-        //res.send('Site rebuilt successfully');
-        
-        if (typeof cb === 'function') cb();
-        return;
-    });
+        });
+    }//end if
 });
 
 //query is GET data.
