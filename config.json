@@ -1,24 +1,16 @@
 {
     "gh_server": "github.com",
+
     "scripts": {
         "build": "./scripts/build.sh",
         "publish": "./scripts/publish.sh"
     },
-    "sites": [
-        "epic": {
-            "path": "/www/epic", 
-            "repo": "~/epic/"},
-        "hcc-colorado": {
-            "path": "/www/hcc-colorado",
-            "repo": "~/hcc-colorado"}],
     "email": {
         "user": "", 
         "password": "", 
         "host": "", 
         "ssl": true
     },
-    "accounts": [
-        "developmentseed",
-        "mapbox"
-    ]
+    
+    "accounts": ["jenningsanderson", "rsoden"]
 }
