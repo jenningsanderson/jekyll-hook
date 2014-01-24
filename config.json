@@ -5,12 +5,12 @@
         "build": "./scripts/build.sh",
         "publish": "./scripts/publish.sh"
     },
-    
+
     "accounts": ["jenningsanderson", "rsoden"],
 
     "sites": {
         "epic": {
-            "repo": "~/epic/"},
+            "repo": "/home/ubuntu/epic/"},
         "hcc-colorado": {
             "repo": "/home/ubuntu/hcc-colorado"}
     }
