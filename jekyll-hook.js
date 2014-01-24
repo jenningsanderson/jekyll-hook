@@ -13,8 +13,11 @@ app.use(express.bodyParser());
 
 //This is the default behavior:
 app.get('/', function(req, res){
-    res.send('Hello World');
-    console.log("Got connection")
+    var site = 'hcc-colorado'
+    var site = req.query.site;
+    var task = 'cd' + config.sites[site].repo + '; rake -T';
+
+    res.send(task);
 });
 
 //query is GET data.
