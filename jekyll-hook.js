@@ -47,6 +47,7 @@ app.get('/rake', function(req, res){
         if (typeof cb === 'function') cb();
         return;
     });
+    res.send('done');
 });
 
 // Receive webhook post
