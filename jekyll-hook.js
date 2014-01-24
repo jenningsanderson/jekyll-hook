@@ -48,7 +48,7 @@ app.get('/rake', function(req, res){
         if (typeof cb === 'function') cb();
         return;
     });
-}, req, res);
+});
 
 // Receive webhook post
 app.post('/hooks/jekyll/:branch', function(req, res) {
