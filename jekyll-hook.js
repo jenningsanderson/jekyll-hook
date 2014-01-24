@@ -6,7 +6,6 @@ var app     = express();
 var queue   = require('queue-async');
 var tasks   = queue(1);
 var spawn   = require('child_process').spawn;
-var exec    = require('child_process').exec;
 //var email   = require('emailjs/email');
 //var mailer  = email.server.connect(config.email);
 
@@ -18,7 +17,7 @@ app.get('/', function(req, res){
     var site = req.query.site;
     var task = 'cd ' + config.sites[site].repo + '; rake -T';
 
-    var data = run(task, '', function(err) {
+    var data = run(task, [], function(err) {
         if (err) {
             console.log('Failed to run task');
             //res.send('build failed')
