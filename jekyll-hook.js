@@ -22,7 +22,7 @@ app.get('/', function(req, res){
     }
 
     if (params.length > 0){
-        var ouput = run('./scripts/rake_tasks.sh', params, function(err) {
+        var output = run('./scripts/rake_tasks.sh', params, function(err) {
         if (err) {
             console.log('Task failed.');
             res.send('task failed')
