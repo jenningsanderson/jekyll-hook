@@ -38,7 +38,7 @@ app.get('/', function(req, res){
         });
     }//end if
 
-    res.send('Yep, reached the end:'+shellResponse.toString());
+    res.send('Yep, reached the end:'+shellResponse);
 });
 
 //query is GET data.
