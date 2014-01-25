@@ -15,7 +15,7 @@ app.use(express.bodyParser());
 app.get('/', function(req, res){
     var site = req.query.site;
     if (site != undefined){
-        if (config.sites[site].repo != undefined){
+        if (config.sites[site] != undefined){
             var repo = config.sites[site].repo;
         }
     }
