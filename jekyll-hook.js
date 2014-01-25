@@ -6,7 +6,7 @@ var app     = express();
 var queue   = require('queue-async');
 var tasks   = queue(1);
 var spawn   = require('child_process').spawn;
-var shellIO = []
+var commandLine = 'nothing yet'
 //var email   = require('emailjs/email');
 //var mailer  = email.server.connect(config.email);
 
@@ -27,7 +27,7 @@ app.get('/', function(req, res){
 
         // Done running scripts
         console.log('Successfully ran rake listing');
-        res.send(shellIO);
+        res.send(commandLine);
         
     }else{
         res.send("Invalid site value");
@@ -138,12 +138,12 @@ function run(file, params, cb) {
 
     process.stdout.on('data', function (data) {
         console.log('' + data);
-        shellIO.push(data)
+        commandLine = data.toString();
     });
 
     process.stderr.on('data', function (data) {
         console.warn('' + data);
-        shellIO.push(data)
+        commandLine = data.toString();
     });
 
     process.on('exit', function (code) {
