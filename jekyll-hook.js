@@ -40,7 +40,7 @@ app.get('/', function(req, res){
         });
     }//end if
 
-    res.send('Yep, reached the end:'+shellResponse);
+    res.send('Yep, reached the end');
 });
 
 //query is GET data.
