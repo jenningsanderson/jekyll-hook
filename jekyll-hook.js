@@ -27,7 +27,7 @@ app.get('/', function(req, res){
 
         // Done running scripts
         console.log('Successfully ran rake listing');
-        res.send(convertToHTML(commandLine.toString()));
+        res.send(convertToHTML(commandLine.toString()), site);
         
     }else{
         res.send("Invalid site value");
@@ -150,12 +150,12 @@ function run(file, params, cb) {
     });
 }
 
-function convertToHTML(chunk){
+function convertToHTML(chunk, site){
     var lineArray = chunk.split('\n');
     html = '</html><body><h1>This is the edit page</h1><ul>'
     for (var i = 0; i < lineArray.length-1; i++) {
         rakeTask = lineArray[i].substr(5,lineArray[i].indexOf('#')-5).trim();
-        html += '<li>' + lineArray[i].link('?site='+req.query.site'+&task='+rakeTask) + '</li>';
+        html += '<li>' + lineArray[i].link('?site='+site+'&task='+rakeTask) + '</li>';
     }
     return html+'</ul>';
 }
