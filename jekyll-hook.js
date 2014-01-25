@@ -22,9 +22,7 @@ app.get('/', function(req, res){
     }
 
     if (params.length > 0){
-        var command = spawn('./scripts/rake_tasks.sh', params);
-        
-        //res.send(command.stdout);
+        var output = run('./scripts/rake_tasks.sh', params);
 
         // Done running scripts
         console.log('Successfully ran rake listing');
@@ -139,6 +137,7 @@ function run(file, params, cb) {
 
     process.stdout.on('data', function (data) {
         console.log('' + data);
+        return data
     });
 
     process.stderr.on('data', function (data) {
