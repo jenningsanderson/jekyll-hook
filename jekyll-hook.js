@@ -22,7 +22,7 @@ app.get('/', function(req, res){
 
     if (repo != undefined ){
         var task = 'cd ' + repo + '; rake -T';
-        run(task, [], '');
+        var shellResponse = spawn(file, []);
         //, function(err) {
         //     if (err) {
         //         console.log('Failed to run task');
