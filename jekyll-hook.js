@@ -14,8 +14,10 @@ app.use(express.bodyParser());
 //This is the default behavior:
 app.get('/', function(req, res){
     var site = req.query.site;
-    if (config.sites[site].repo != undefined){
-        repo = config.sites[site].repo;
+    if (site != undefined){
+        if (config.sites[site].repo != undefined){
+            var repo = config.sites[site].repo;
+        }
     }
 
     if (repo != undefined ){
