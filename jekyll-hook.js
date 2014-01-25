@@ -24,19 +24,19 @@ app.get('/', function(req, res){
     console.log(params);
 
     if (params.length > 0){
-        var shellResponse = spawn('./scripts/rake_tasks.sh', params, function(err) {
-             if (err) {
-                console.log('Failed to run task');
-                //res.send('build failed')
-                if (typeof cb === 'function') cb();
-                return;
-            }
-            // Done running scripts
-            console.log('Successfully ran rake task');
-            //res.send('Site rebuilt successfully');
-        
+        run('./scripts/rake_tasks.sh', params, function(err) {
+        if (err) {
+            console.log('Failed to run task');
+            res.send('build failed')
             if (typeof cb === 'function') cb();
             return;
+        }
+        // Done running scripts
+        console.log('Successfully ran rake task: '+rakeTask);
+        res.send('Site rebuilt successfully');
+        
+        if (typeof cb === 'function') cb();
+        return;
         });
     }//end if
 
