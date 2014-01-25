@@ -143,7 +143,6 @@ function run(file, params, cb) {
 
     process.stderr.on('data', function (data) {
         console.warn('' + data);
-        commandLine = data.tohtmlstring();
     });
 
     process.on('exit', function (code) {
