@@ -151,7 +151,7 @@ function run(file, params, cb) {
 }
 
 function convertToHTML(chunk){
-    var withBreaks = chunk.replace(/\n/,'<br>');
+    var withBreaks = chunk.replace(/\n/g,'<br>');
 
     return withBreaks;
 }
