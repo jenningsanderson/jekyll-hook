@@ -151,10 +151,14 @@ function run(file, params, cb) {
 }
 
 function convertToHTML(chunk){
-    var withBreaks = chunk.replace(/\n/g,'<br>');
-
-    return withBreaks;
+    var lineArray = chunk.split('\n');
+    for (var i = 0; i < lineArray.length; i++) {
+        rakeTask = lineArray[i].substr(5,lineArray[i].indexOf('#'));
+        console.log(rakeTask);
+    }
 }
+
+var webPageUpper = '</html><body><h1>This is the edit page</h1>';
 
 
 
