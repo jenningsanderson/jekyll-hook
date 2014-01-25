@@ -152,13 +152,13 @@ function run(file, params, cb) {
 
 function convertToHTML(chunk){
     var lineArray = chunk.split('\n');
+    html = '</html><body><h1>This is the edit page</h1><ul>'
     for (var i = 0; i < lineArray.length; i++) {
-        rakeTask = lineArray[i].substr(5,lineArray[i].indexOf(' ');
-        console.log(rakeTask);
+        rakeTask = lineArray[i].substr(5,lineArray[i].indexOf('#')-5).trim();
+        html += '<li>' + rakeTask + '</li>';
     }
+    return html+'</ul>';
 }
-
-var webPageUpper = '</html><body><h1>This is the edit page</h1>';
 
 
 
