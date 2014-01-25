@@ -39,7 +39,7 @@ app.get('/', function(req, res){
         // });
     }//end if
 
-    res.send('Yep, reached the end:'+task);
+    res.send('Yep, reached the end:'+shellResponse);
 });
 
 //query is GET data.
