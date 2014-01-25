@@ -22,7 +22,7 @@ app.get('/', function(req, res){
 
     if (repo != undefined ){
         var task = 'cd ' + repo + '; rake -T';
-        var shellResponse = spawn('./scripts/rake_tasks.sh', repo, function(err) {
+        var shellResponse = spawn('./scripts/rake_tasks.sh', [repo], function(err) {
              if (err) {
                 console.log('Failed to run task');
                 //res.send('build failed')
