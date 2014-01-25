@@ -21,7 +21,7 @@ app.get('/', function(req, res){
         }
     }
 
-    if (params.length > 0){}
+    if (params.length > 0){
         var task = 'cd ' + repo + '; rake -T';
         var shellResponse = spawn('./scripts/rake_tasks.sh', params, function(err) {
              if (err) {
