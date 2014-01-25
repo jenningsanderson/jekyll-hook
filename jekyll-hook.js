@@ -21,26 +21,25 @@ app.get('/', function(req, res){
         }
     }
 
-    console.log(params);
-
     if (params.length > 0){
-        run('./scripts/rake_tasks.sh', params, function(err) {
+        var ouput = run('./scripts/rake_tasks.sh', params, function(err) {
         if (err) {
-            console.log('Failed to run task');
-            res.send('build failed')
+            console.log('Task failed.');
+            res.send('task failed')
             if (typeof cb === 'function') cb();
             return;
         }
         // Done running scripts
-        console.log('Successfully ran rake task: '+rakeTask);
-        res.send('Site rebuilt successfully');
+        console.log('Successfully ran rake listing');
+        res.send('output');
         
         if (typeof cb === 'function') cb();
         return;
         });
     }//end if
-
-    res.send('Yep, reached the end');
+    else{
+        res.send("Invalid site value");
+    }
 });
 
 //query is GET data.
