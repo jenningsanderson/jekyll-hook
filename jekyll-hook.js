@@ -27,7 +27,7 @@ app.get('/', function(req, res){
 
         // Done running scripts
         console.log('Successfully ran rake listing');
-        res.send(ConvertToHTML(commandLine.toString()));
+        res.send(convertToHTML(commandLine.toString()));
         
     }else{
         res.send("Invalid site value");
