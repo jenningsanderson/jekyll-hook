@@ -22,7 +22,7 @@ app.get('/', function(req, res){
     }
 
     if (params.length > 0){
-        var command = run('./scripts/rake_tasks.sh', params);
+        var command = spawn('./scripts/rake_tasks.sh', params);
         
         var output = command.stdout;
 
