@@ -27,7 +27,11 @@ app.get('/', function(req, res){
 
         // Done running scripts
         console.log('Successfully ran rake listing');
-        res.send(commandLine);
+        var frag = document.createDocumentFragment();
+        frag.appendChild(stuff);
+        var html = frag.innerHTML;
+        delete frag; // if you're concerned about leaving things in memory
+        res.send(html);
         
     }else{
         res.send("Invalid site value");
@@ -138,7 +142,7 @@ function run(file, params, cb) {
 
     process.stdout.on('data', function (data) {
         console.log('' + data);
-        commandLine = data.tohtmlstring();
+        commandLine = data;
     });
 
     process.stderr.on('data', function (data) {
