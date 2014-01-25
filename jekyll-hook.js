@@ -27,7 +27,7 @@ app.get('/', function(req, res){
 
         // Done running scripts
         console.log('Successfully ran rake listing');
-        res.send(commandLine.toString());
+        res.send(ConvertToHTML(commandLine.toString()));
         
     }else{
         res.send("Invalid site value");
@@ -149,3 +149,12 @@ function run(file, params, cb) {
         if (typeof cb === 'function') cb(code !== 0);
     });
 }
+
+function convertToHTML(chunk){
+    var withBreaks = chunk.replace(/\n/,'<br>');
+
+    return withBreaks;
+}
+
+
+
