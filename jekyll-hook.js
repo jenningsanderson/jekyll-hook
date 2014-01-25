@@ -24,7 +24,7 @@ app.get('/', function(req, res){
     if (params.length > 0){
         var command = spawn('./scripts/rake_tasks.sh', params);
         
-        res.send(command.stdout);
+        //res.send(command.stdout);
 
         // Done running scripts
         console.log('Successfully ran rake listing');
