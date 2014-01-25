@@ -31,7 +31,7 @@ app.get('/', function(req, res){
         }
         // Done running scripts
         console.log('Successfully ran rake listing');
-        res.send('output');
+        res.send(output);
         
         if (typeof cb === 'function') cb();
         return;
