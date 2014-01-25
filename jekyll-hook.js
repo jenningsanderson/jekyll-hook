@@ -27,11 +27,7 @@ app.get('/', function(req, res){
 
         // Done running scripts
         console.log('Successfully ran rake listing');
-        var frag = document.createDocumentFragment();
-        frag.appendChild(stuff);
-        var html = frag.innerHTML;
-        delete frag; // if you're concerned about leaving things in memory
-        res.send(html);
+        res.send(commandLine.toString());
         
     }else{
         res.send("Invalid site value");
