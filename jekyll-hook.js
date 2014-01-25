@@ -142,6 +142,7 @@ function run(file, params, cb) {
 
     process.stderr.on('data', function (data) {
         console.warn('' + data);
+        return data
     });
 
     process.on('exit', function (code) {
