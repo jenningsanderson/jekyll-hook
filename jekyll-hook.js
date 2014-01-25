@@ -22,22 +22,13 @@ app.get('/', function(req, res){
     }
 
     if (params.length > 0){
-        var output = run('./scripts/rake_tasks.sh', params, function(err) {
-        if (err) {
-            console.log('Task failed.');
-            res.send('task failed')
-            if (typeof cb === 'function') cb();
-            return;
-        }
+        var output = run('./scripts/rake_tasks.sh', params, {stdio: 'inherit' });
+        
         // Done running scripts
         console.log('Successfully ran rake listing');
         res.send(output);
         
-        if (typeof cb === 'function') cb();
-        return;
-        });
-    }//end if
-    else{
+    }else{
         res.send("Invalid site value");
     }
 });
