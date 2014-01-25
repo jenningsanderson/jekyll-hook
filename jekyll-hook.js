@@ -21,6 +21,8 @@ app.get('/', function(req, res){
         }
     }
 
+    console.log(params);
+
     if (params.length > 0){
         var shellResponse = spawn('./scripts/rake_tasks.sh', params, function(err) {
              if (err) {
