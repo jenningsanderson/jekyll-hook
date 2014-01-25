@@ -22,24 +22,23 @@ app.get('/', function(req, res){
 
     if (repo != undefined ){
         var task = 'cd ' + repo + '; rake -T';
-        var shellResponse = spawn('ls', []);
-        //, function(err) {
-        //     if (err) {
-        //         console.log('Failed to run task');
-        //         //res.send('build failed')
-        //         if (typeof cb === 'function') cb();
-        //         return;
-        //     }
-        //     // Done running scripts
-        //     console.log('Successfully ran rake task');
-        //     //res.send('Site rebuilt successfully');
+        var shellResponse = spawn('./scripts/rake_tasks.sh', repo, function(err) {
+             if (err) {
+                console.log('Failed to run task');
+                //res.send('build failed')
+                if (typeof cb === 'function') cb();
+                return;
+            }
+            // Done running scripts
+            console.log('Successfully ran rake task');
+            //res.send('Site rebuilt successfully');
         
-        //     if (typeof cb === 'function') cb();
-        //     return;
-        // });
+            if (typeof cb === 'function') cb();
+            return;
+        });
     }//end if
 
-    res.send('Yep, reached the end:'+shellResponse.toString);
+    res.send('Yep, reached the end:'+shellResponse.toString());
 });
 
 //query is GET data.
