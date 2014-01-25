@@ -14,15 +14,16 @@ app.use(express.bodyParser());
 //This is the default behavior:
 app.get('/', function(req, res){
     var site = req.query.site;
+    var params = []
     if (site != undefined){
         if (config.sites[site] != undefined){
-            var repo = config.sites[site].repo;
+            params.push(config.sites[site].repo)
         }
     }
 
-    if (repo != undefined ){
+    if (params.length > 0){}
         var task = 'cd ' + repo + '; rake -T';
-        var shellResponse = spawn('./scripts/rake_tasks.sh', [repo], function(err) {
+        var shellResponse = spawn('./scripts/rake_tasks.sh', params, function(err) {
              if (err) {
                 console.log('Failed to run task');
                 //res.send('build failed')
