@@ -138,12 +138,12 @@ function run(file, params, cb) {
 
     process.stdout.on('data', function (data) {
         console.log('' + data);
-        commandLine = data.toString();
+        commandLine = data.tohtmlstring();
     });
 
     process.stderr.on('data', function (data) {
         console.warn('' + data);
-        commandLine = data.toString();
+        commandLine = data.tohtmlstring();
     });
 
     process.on('exit', function (code) {
