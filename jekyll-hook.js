@@ -155,7 +155,7 @@ function convertToHTML(chunk){
     html = '</html><body><h1>This is the edit page</h1><ul>'
     for (var i = 0; i < lineArray.length-1; i++) {
         rakeTask = lineArray[i].substr(5,lineArray[i].indexOf('#')-5).trim();
-        html += '<li>' + lineArray[i].link('?site=req.query.site&task='+rakeTask) + '</li>';
+        html += '<li>' + lineArray[i].link('?site='+req.query.site'+&task='+rakeTask) + '</li>';
     }
     return html+'</ul>';
 }
