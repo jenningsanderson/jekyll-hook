@@ -154,7 +154,7 @@ function convertToHTML(chunk, site){
     var lineArray = chunk.split('\n');
     html = '</html><body><h1>This is the edit page</h1><ul>'
     for (var i = 0; i < lineArray.length-1; i++) {
-        rakeTask = lineArray[i].substr(5,lineArray[i].indexOf('#')-5).trim().replace("arg1",'');
+        rakeTask = lineArray[i].substr(5,lineArray[i].indexOf('#')-5).trim().replace("[arg1]",'');
         html += '<li>' + lineArray[i].link('/rake?site='+site+'&task='+ rakeTask) + '</li>';
     }
     return html+'</ul>';
