@@ -37,13 +37,17 @@ app.get('/', function(req, res){
 //example: ...8080/rake?task='put rake task here'
 app.get('/rake', function(req, res){
     //local variables for the rake task
-    var site = req.query.site;
-    var rakeTask = req.query.task;
-    var repo_path  = config.sites[site].repo;
+    var site        = req.query.site;
+    var rakeTask    = req.query.task;
+    var local_path   = config.sites[site].local_repo;
 
     //feedback
-    console.log('Got task: '+rakeTask.toString()+' for '+site.toString()+' site');
-
+    if ( rakeTask !=undefined ){
+        console.log('Got task: '+rakeTask.toString()+' for '+site.toString()+' site');
+    }else{
+        res.send('Did not receive a task')
+    }
+    
     //Prepare the array to pass
     var params = []
     params.push(repo_path);
@@ -67,10 +71,10 @@ app.get('/rake', function(req, res){
 });
 
 
-'''
+/*
 This is a streamlined version of the original Development Seed 
 webhook post.
-'''
+*/
 
 app.post('/hooks/jekyll/:branch', function(req, res) {
     console.log('Received Webhook');
