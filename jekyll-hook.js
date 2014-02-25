@@ -16,7 +16,7 @@ app.get('/', function(req, res){
     var params = []
     if (site != undefined){
         if (config.sites[site] != undefined){
-            params.push(config.sites[site].repo)
+            params.push(config.sites[site].local_repo)
         }
     }
 
@@ -28,7 +28,7 @@ app.get('/', function(req, res){
         res.send(convertToHTML(commandLine.toString(),site));
         
     }else{
-        res.send("Invalid site value");
+        res.send("Please enter a valid site value.");
     }
 });
 
@@ -50,7 +50,7 @@ app.get('/rake', function(req, res){
     
     //Prepare the array to pass
     var params = []
-    params.push(repo_path);
+    params.push(local_path);
     params.push(rakeTask);
 
     //Run the rake scripts
