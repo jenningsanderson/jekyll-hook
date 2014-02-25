@@ -1,20 +1,11 @@
 #!/bin/bash
 set -e
 
-# This script is meant to be run automatically
-# as part of the jekyll-hook application.
-# https://github.com/developmentseed/jekyll-hook
+#Move to the directory
+cd $1
 
-repo=$1
-branch=$2
-owner=$3
-giturl=$4
-source=$5
-build=$6
+#Pull from Github
+git pull origin master
 
-# Set the path of the hosted site
-site="/www/hcc"
-
-# Remove old site files, move new ones in place
-rm -rf $site
-mv $build $site
+#Do the fullbuild
+rake fullbuild

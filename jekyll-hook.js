@@ -108,24 +108,24 @@ app.post('/hooks/jekyll/:branch', function(req, res) {
         }
 
         // Process webhook data into params for scripts
-        /* repo    */ params.push(data.repo);
-        /* branch   params.push(data.branch);   */
-        /* owner    params.push(data.owner);    */
-        /* giturl  */ params.push('git@' + config.gh_server + ':' + data.owner + '/' + data.repo + '.git');
-        /* source  */ params.push(config.temp + '/' + data.owner + '/' + data.repo + '/' + data.branch + '/' + 'code');
-        /* build   */ params.push(config.temp + '/' + data.owner + '/' + data.repo + '/' + data.branch + '/' + 'site');
+        /* repo     params.push(data.repo);
+        /* branch   params.push(data.branch);   
+        /* owner    params.push(data.owner);    
+        /* giturl   params.push('git@' + config.gh_server + ':' + data.owner + '/' + data.repo + '.git');
+        /* source   params.push(config.temp + '/' + data.owner + '/' + data.repo + '/' + data.branch + '/' + 'code');
+        /* build    params.push(config.temp + '/' + data.owner + '/' + data.repo + '/' + data.branch + '/' + 'site');*/
 
+        params.push( config.sites[data.repo].local_repo )
         // Run build script
-        run(config.scripts.build, params, function(err) {
+        run('./scripts/publish.sh', params, function(err) {
             if (err) {
-                console.log('Failed to build: ' + data.owner + '/' + data.repo);
-                send('Your website at ' + data.owner + '/' + data.repo + ' failed to build.', 'Error building site', data);
-
+                console.log('Failed to build');
+                
                 if (typeof cb === 'function') cb();
                 return;
             }
             // Done running scripts
-            console.log('Successfully rendered: ' + data.owner + '/' + data.repo);
+            console.log('Successfully built site.');
             
             if (typeof cb === 'function') cb();
             return;
