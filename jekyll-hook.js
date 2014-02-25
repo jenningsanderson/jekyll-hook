@@ -116,6 +116,8 @@ app.post('/hooks/jekyll/:branch', function(req, res) {
         /* build    params.push(config.temp + '/' + data.owner + '/' + data.repo + '/' + data.branch + '/' + 'site');*/
 
         params.push( config.sites[data.repo].local_repo )
+
+        console.log("Params: " + params);
         // Run build script
         run('./scripts/publish.sh', params, function(err) {
             if (err) {
