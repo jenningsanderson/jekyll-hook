@@ -7,8 +7,6 @@ var queue   = require('queue-async');
 var tasks   = queue(1);
 var spawn   = require('child_process').spawn;
 var commandLine = 'nothing yet'
-//var email   = require('emailjs/email');
-//var mailer  = email.server.connect(config.email);
 
 app.use(express.bodyParser());
 
@@ -68,10 +66,14 @@ app.get('/rake', function(req, res){
     });
 });
 
-// Receive webhook post
-app.post('/hooks/jekyll/:branch', function(req, res) {
 
-    console.log('hello');
+'''
+This is a streamlined version of the original Development Seed 
+webhook post.
+'''
+
+app.post('/hooks/jekyll/:branch', function(req, res) {
+    console.log('Received Webhook');
 
     // Close connection
     res.send(202);
@@ -103,8 +105,8 @@ app.post('/hooks/jekyll/:branch', function(req, res) {
 
         // Process webhook data into params for scripts
         /* repo    */ params.push(data.repo);
-        /* branch  */ params.push(data.branch);
-        /* owner   */ params.push(data.owner);
+        /* branch   params.push(data.branch);   */
+        /* owner    params.push(data.owner);    */
         /* giturl  */ params.push('git@' + config.gh_server + ':' + data.owner + '/' + data.repo + '.git');
         /* source  */ params.push(config.temp + '/' + data.owner + '/' + data.repo + '/' + data.branch + '/' + 'code');
         /* build   */ params.push(config.temp + '/' + data.owner + '/' + data.repo + '/' + data.branch + '/' + 'site');

@@ -10,8 +10,12 @@
 
     "sites": {
         "epic": {
-            "repo": "/home/ubuntu/epic/"},
+            "gh_repo" : "epic",
+            "local_repo": "/home/ubuntu/epic/",
+            "www" : "/www/epic"},
         "hcc-colorado": {
-            "repo": "/home/ubuntu/hcc-colorado"}
+            "gh_repo" : "hcc-colorado",
+            "local_repo": "/home/ubuntu/hcc-colorado",
+            "www" : "/www/hcc"}
     }
 }
